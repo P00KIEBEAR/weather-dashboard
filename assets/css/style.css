@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.input {
+  text-align: center;
+}
+
+input [type="text"] {
+  height: 50px;
+  width: 600px;
+  background: blue;
+  font-size: 20px;
+
+}
+
+input [type="submit"] {
+  height: 50px;
+  width: 100px;
+  background: blue;
+  font-size: 20px;
+
+}
+
+.hero {
+  padding: 3% 4%;
+  background-color: var(--dark);
+  color: var(--primary);
+}
+
+.hero p {
+  max-width: 75%;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 3rem;
+  background-color: var(--primary);
+  color: var(--dark);
+  padding: 0 10px;
+  align-content: center;
+  border-radius: var(--border-radius);
+  box-shadow: 6px 5px var(--light-dark);
+}
