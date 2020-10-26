@@ -17,6 +17,12 @@ input [type="text"] {
 
 }
 
+.col-4 {
+  border: 1px;
+  box-sizing: border-box;
+  background-color: aqua;
+}
+
 input [type="submit"] {
   height: 50px;
   width: 100px;
@@ -44,4 +50,12 @@ input [type="submit"] {
   align-content: center;
   border-radius: var(--border-radius);
   box-shadow: 6px 5px var(--light-dark);
+}
+
+
+.col-2 {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  border-radius: 10%;
 }

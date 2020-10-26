@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Weather Dashboard</title>
@@ -13,25 +12,83 @@
 <body>
   <header class="hero">
     <h1 class="app-title"><i class="weather"></i> Weather Dashboard!</h1>
-    <p>Search for a city to get the!
+    <p>Search for a city to get the weather!
     </p>
   </header>
   <main class="flex-row justify-space-between">
-    <div class="container">
+    <div class="container m-0">
       <div class="row">
 
-        <div class="col-4 ">
-          <div class="row">
-            <input type="text" class="inputvalue" placeholder="Enter city">
-            <input type="submit" value="Search">
+        <div class="col-4 bg-light">
+          <div>
+            <h3>Enter city here!</h3>
+          </div>
+          <div class="row ml-3">
+            <input type="text" class="city" placeholder="Enter city">
+            <input type="submit" value="Search" class="button">
+          </div>
+          <div>
+            <ul class="list-group  mt-5">
+              <li class="list-group-item" id="city-1">Cras justo odio</li>
+              <li class="list-group-item" id="city-2">Dapibus ac facilisis in</li>
+              <li class="list-group-item" id="city-3">Morbi leo risus</li>
+              <li class="list-group-item" id="city-4">Porta ac consectetur ac</li>
+              <li class="list-group-item" id="city-5">Vestibulum at eros</li>
+            </ul>
           </div>
         </div>
-        <div class="col-8">
-
+        <div class="col-8 boarder-primary">
+          <div class="row mt-2 ml-2 mb-5 ">
+            <span class="border border-primary">
+              <ul class="currentLocation  mt-2 ml-5 ">
+                <h1 class="location">placeholder</h1>
+                <li class="temp">70<span>°F</span></li>
+                <li class="hunidity">placeholder</li>
+                <li class="wind">placeholder</li>
+                <li class="uv">placeholder</li>
+              </ul>
+            </span>
+          </div>
+          <div class="row">
+            <h2 class="banner">5-Day Forecast:</h2>
+          </div>
+          <div class="row card-5 ">
+            <div class="col-2 mx-auto" id="day1">
+              <h3 class="date"></h3>
+              <div class="img"></div>
+              <h3 class="temp1"></h3>
+              <h3 class="humidity1"></h3>
+            </div>
+            <div class="col-2 mx-auto" id="day2">
+              <h3 class="date"></h3>
+              <div class="img"></div>
+              <h3 class="temp2"></h3>
+              <h3 class="humidity2"></h3>
+            </div>
+            <div class="col-2 mx-auto" id="day3">
+              <h3 class="date"></h3>
+              <div class="img"></div>
+              <h3 class="temp3"></h3>
+              <h3 class="humidity3"></h3>
+            </div>
+            <div class="col-2 mx-auto" id="day4">
+              <h3 class="date"></h3>
+              <div class="img"></div>
+              <h3 class="temp4"></h3>
+              <h3 class="humidity4"></h3>
+            </div>
+            <div class="col-2 mx-auto" id="day5">
+              <h3 class="date"></h3>
+              <div class="img"></div>
+              <h3 class="temp5"></h3>
+              <h3 class="humidity5"></h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="assets\css\script.js"></script>
 </body>
 
