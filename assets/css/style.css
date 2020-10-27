@@ -54,8 +54,9 @@ input [type="submit"] {
 
 
 .col-2 {
-  height: 100px;
+  height: 150px;
   width: 100px;
   background-color: blue;
   border-radius: 10%;
+  color: azure;
 }
