@@ -10,11 +10,16 @@ var humidity = document.querySelector('.humidity')
 var uv = document.querySelector('uv')
 var icon = document.createElement('img');
 var iconcode = [];
-
+var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
 var day = '';
 var days = [];
 var process = []
-
+if (historyLog === []) {
+  console.log("hi")
+}
+else {
+  console.log(historyLog)
+}
 
 var days = [];
 searchBtn.addEventListener('click', function () {
@@ -35,10 +40,10 @@ searchBtn.addEventListener('click', function () {
   });
 })
 
-//need to add link to list
 
 var showData = function () {
-
+  historyLog.push(city.value);
+  localStorage.setItem('historyLog', JSON.stringify(historyLog))
   //need current date
   var s = new Date(days[1].dt).toLocaleDateString("en-US")
   console.log(s)
@@ -59,6 +64,13 @@ var showData = function () {
   console.log(dateArr)
 
   // need to search and check time to make sure it allways noon may have to use moment?
+  /*
+   for (let i = 0; i < days[0].length; i++) {
+ 
+ 
+   }
+ 
+ */
 
   for (let i = 0; i < dateArr.length; i++) {
 
@@ -81,9 +93,9 @@ var showData = function () {
 
   }
 }
+ //need to make a search history
 
-
-
+//need to add link to history list
 
 
 
