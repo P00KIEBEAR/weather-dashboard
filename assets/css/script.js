@@ -1,5 +1,12 @@
 "use strict";
 
+
+var city1 = document.querySelector('#city-1');
+var city2 = document.querySelector('#city-2');
+var city3 = document.querySelector('#city-3');
+var city4 = document.querySelector('#city-4');
+var city5 = document.querySelector('#city-5');
+var date = moment().format('MM-DD-YYYY')
 var city = document.querySelector('.city');
 var searchBtn = document.querySelector('.button');
 var card5 = document.querySelector('.card-5')
@@ -14,10 +21,22 @@ var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
 var day = '';
 var days = [];
 var process = []
-if (historyLog === []) {
+var pastSearches = [city1, city2, city3, city4, city5]
+
+
+
+//need to add link to history list
+
+if (historyLog.length === 0) {
   console.log("hi")
+
 }
 else {
+  for (let i = 0; i < historyLog.length; i++) {
+    pastSearches[i].innerHTML = historyLog[i]
+
+  }
+
   console.log(historyLog)
 }
 
@@ -45,8 +64,7 @@ var showData = function () {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
   //need current date
-  var s = new Date(days[1].dt).toLocaleDateString("en-US")
-  console.log(s)
+
 
   icon.src = "http://openweathermap.org/img/w/" + days[1].weather[0].icon + ".png";
   place.innerHTML = days[0].city.name;
@@ -93,9 +111,6 @@ var showData = function () {
 
   }
 }
- //need to make a search history
-
-//need to add link to history list
 
 
 
