@@ -7,6 +7,7 @@ var city3 = document.querySelector('#city-3');
 var city4 = document.querySelector('#city-4');
 var city5 = document.querySelector('#city-5');
 var date = moment().format('MM-DD-YYYY')
+var noon = moment().set
 var city = document.querySelector('.city');
 var searchBtn = document.querySelector('.button');
 var card5 = document.querySelector('.card-5')
@@ -27,18 +28,21 @@ var pastSearches = [city1, city2, city3, city4, city5]
 //need to add link to history list
 
 if (historyLog.length === 0) {
-  console.log("hi")
 
+}
+else if (historyLog.length > 5) {
+
+  for (let i = 4; i < historyLog.length; i--) {
+    pastSearches[i].innerHTML = historyLog[i]
+
+  }
 }
 else {
   for (let i = 0; i < historyLog.length; i++) {
     pastSearches[i].innerHTML = historyLog[i]
 
   }
-
-  console.log(historyLog)
 }
-
 
 function cityA() {
   city.value = city1.innerHTML;
@@ -88,6 +92,7 @@ var showData = function () {
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
   //need current date
 
+  var m = moment(days[1].dt_txt)
 
   icon.src = "http://openweathermap.org/img/w/" + days[1].weather[0].icon + ".png";
   place.innerHTML = days[0].city.name;
@@ -95,9 +100,8 @@ var showData = function () {
   humidity.innerText = days[1].main.humidity;
   wind.innerText = days[1].wind.speed;
   place.appendChild(icon);
-
-
-
+  var currentDate = document.querySelector('.date');
+  currentDate.textContent = m._d;
 
   var dateArr = [days[0].list[6].dt_txt, days[0].list[12].dt_txt, days[0].list[18].dt_txt, days[0].list[24].dt_txt, days[0].list[30].dt_txt];
   var iconArr = [days[0].list[6].weather[0].icon, days[0].list[12].weather[0].icon, days[0].list[18].weather[0].icon, days[0].list[24].weather[0].icon, days[0].list[30].weather[0].icon];
