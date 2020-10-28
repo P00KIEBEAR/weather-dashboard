@@ -41,6 +41,7 @@ else {
 
   }
 }
+
 function cityA() {
   city.value = city1.innerHTML;
   search()
@@ -146,4 +147,4 @@ var showData = function () {
 
 
 
-searchBtn.addEventListener('click', search());
+
