@@ -1,6 +1,6 @@
 "use strict";
 
-
+var date = moment().format('MM/DD/YYYY')
 var city1 = document.querySelector('#city-1');
 var city2 = document.querySelector('#city-2');
 var city3 = document.querySelector('#city-3');
@@ -92,26 +92,30 @@ function search() {
   });
 }
 
+//fetch('http://api.openweathermap.org/data/2.5/uvi/history?lat=' + lat + '=lon=' + lon + '&appid=ab02afd371ef6319765f7162754109b5')
 
 var showData = function () {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
+  var lat = days[1].coord.lat
+  var lon = days[1].coord.lon
+
 
   var m = moment(days[1].dt_txt)
 
   icon.src = "http://openweathermap.org/img/w/" + days[1].weather[0].icon + ".png";
   place.innerHTML = days[0].city.name;
-  temp.innerText = days[1].main.temp;
-  humidity.innerText = days[1].main.humidity;
-  wind.innerText = days[1].wind.speed;
+  temp.innerText = 'Temperature:' + days[1].main.temp + '°F';
+  humidity.innerText = 'Humidity:' + days[1].main.humidity + '%';
+  wind.innerText = 'Wind Speed:' + days[1].wind.speed + 'MPH';
   place.appendChild(icon);
   var currentDate = document.querySelector('.date');
-  currentDate.textContent = m._d;
+  currentDate.textContent = date;
 
   var dateArr = [days[0].list[6].dt_txt, days[0].list[15].dt_txt, days[0].list[23].dt_txt, days[0].list[30].dt_txt, days[0].list[38].dt_txt];
   var iconArr = [days[0].list[6].weather[0].icon, days[0].list[15].weather[0].icon, days[0].list[23].weather[0].icon, days[0].list[30].weather[0].icon, days[0].list[38].weather[0].icon];
   var tempArr = [days[0].list[6].main.temp, days[0].list[15].main.temp, days[0].list[23].main.temp, days[0].list[30].main.temp, days[0].list[38].main.temp];
-  console.log(dateArr)
+
 
   // need to search and check time to make sure it allways noon may have to use moment?
   /*
@@ -136,7 +140,7 @@ var showData = function () {
     var tempEl = document.createElement('a')
     tempEl.innerHTML = tempArr[i] + '°F';
     card.appendChild(tempEl);
-    console.log(iconArr[i])
+
     var iconImg = document.createElement('img')
     iconImg.src = "http://openweathermap.org/img/w/" + iconArr[i] + ".png";
     dateEl.appendChild(iconImg)
