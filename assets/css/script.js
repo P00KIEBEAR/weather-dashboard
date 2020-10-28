@@ -1,6 +1,6 @@
 "use strict";
 
-
+var section = document.querySelector('section')
 var city1 = document.querySelector('#city-1');
 var city2 = document.querySelector('#city-2');
 var city3 = document.querySelector('#city-3');
@@ -18,7 +18,6 @@ var uv = document.querySelector('uv')
 var icon = document.createElement('img');
 var iconcode = [];
 var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
-var day = '';
 var days = [];
 var process = []
 var pastSearches = [city1, city2, city3, city4, city5]
@@ -40,8 +39,32 @@ else {
   console.log(historyLog)
 }
 
+
+function cityA() {
+  city.value = city1.innerHTML;
+  search()
+}
+function cityB() {
+  alert(city2.innerHTML);
+}
+function cityC() {
+
+  alert(city3.innerHTML);
+}
+function cityD() {
+  alert(city4.innerHTML);
+}
+function cityE() {
+  alert(city5.innerHTML);
+}
+
 var days = [];
-searchBtn.addEventListener('click', function () {
+searchBtn.addEventListener('click', search())
+
+function search() {
+  if (city.value === "") {
+    city.value = "Phoenix";
+  }
   Promise.all([
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city.value + '&units=imperial&appid=ab02afd371ef6319765f7162754109b5'),
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city.value + '&units=imperial&appid=074f5d708bcfe1160c8fa4c5b0d9f5f7')
@@ -57,7 +80,7 @@ searchBtn.addEventListener('click', function () {
 
     console.log(error);
   });
-})
+}
 
 
 var showData = function () {
