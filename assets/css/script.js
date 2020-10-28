@@ -1,38 +1,36 @@
 "use strict";
 
-var section = document.querySelector('section')
+
 var city1 = document.querySelector('#city-1');
 var city2 = document.querySelector('#city-2');
 var city3 = document.querySelector('#city-3');
 var city4 = document.querySelector('#city-4');
 var city5 = document.querySelector('#city-5');
-var date = moment().format('MM-DD-YYYY')
-var noon = moment().set
 var city = document.querySelector('.city');
 var searchBtn = document.querySelector('.button');
-var card5 = document.querySelector('.card-5')
+var card5 = document.querySelector('.card-5');
 var place = document.querySelector('.location');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
-var humidity = document.querySelector('.humidity')
-var uv = document.querySelector('uv')
+var humidity = document.querySelector('.humidity');
+var uv = document.querySelector('uv');
 var icon = document.createElement('img');
 var iconcode = [];
 var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
 var days = [];
-var process = []
-var pastSearches = [city1, city2, city3, city4, city5]
+var process = [];
+var pastSearches = [city1, city2, city3, city4, city5];
 
 
 
-//need to add link to history list
+//need to reverse history list
 
 if (historyLog.length === 0) {
 
 }
-else if (historyLog.length > 5) {
+else if (historyLog.length > 4) {
 
-  for (let i = 4; i < historyLog.length; i--) {
+  for (let i = 0; i < 5; i++) {
     pastSearches[i].innerHTML = historyLog[i]
 
   }
@@ -43,32 +41,39 @@ else {
 
   }
 }
-
 function cityA() {
   city.value = city1.innerHTML;
   search()
 }
 function cityB() {
-  alert(city2.innerHTML);
+  city.value = city2.innerHTML;
+  search()
 }
 function cityC() {
 
-  alert(city3.innerHTML);
+  city.value = city3.innerHTML;
+  search()
 }
 function cityD() {
-  alert(city4.innerHTML);
+  city.value = city4.innerHTML;
+  search()
 }
 function cityE() {
-  alert(city5.innerHTML);
+  city.value = city5.innerHTML;
+  search()
 }
 
 var days = [];
-searchBtn.addEventListener('click', search())
 
 function search() {
+  card5.innerHTML = "";
   if (city.value === "") {
-    city.value = "Phoenix";
+    city.value = 'phoenix'
   }
+  else {
+
+  }
+
   Promise.all([
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city.value + '&units=imperial&appid=ab02afd371ef6319765f7162754109b5'),
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city.value + '&units=imperial&appid=074f5d708bcfe1160c8fa4c5b0d9f5f7')
@@ -90,7 +95,6 @@ function search() {
 var showData = function () {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
-  //need current date
 
   var m = moment(days[1].dt_txt)
 
@@ -103,9 +107,9 @@ var showData = function () {
   var currentDate = document.querySelector('.date');
   currentDate.textContent = m._d;
 
-  var dateArr = [days[0].list[6].dt_txt, days[0].list[12].dt_txt, days[0].list[18].dt_txt, days[0].list[24].dt_txt, days[0].list[30].dt_txt];
-  var iconArr = [days[0].list[6].weather[0].icon, days[0].list[12].weather[0].icon, days[0].list[18].weather[0].icon, days[0].list[24].weather[0].icon, days[0].list[30].weather[0].icon];
-  var tempArr = [days[0].list[6].main.temp, days[0].list[12].main.temp, days[0].list[18].main.temp, days[0].list[24].main.temp, days[0].list[30].main.temp];
+  var dateArr = [days[0].list[6].dt_txt, days[0].list[15].dt_txt, days[0].list[23].dt_txt, days[0].list[30].dt_txt, days[0].list[38].dt_txt];
+  var iconArr = [days[0].list[6].weather[0].icon, days[0].list[15].weather[0].icon, days[0].list[23].weather[0].icon, days[0].list[30].weather[0].icon, days[0].list[38].weather[0].icon];
+  var tempArr = [days[0].list[6].main.temp, days[0].list[15].main.temp, days[0].list[23].main.temp, days[0].list[30].main.temp, days[0].list[38].main.temp];
   console.log(dateArr)
 
   // need to search and check time to make sure it allways noon may have to use moment?
@@ -118,6 +122,7 @@ var showData = function () {
  */
 
   for (let i = 0; i < dateArr.length; i++) {
+
 
     var dateSlpit = dateArr[i].split(" ");
     //still need to reverse date
@@ -141,3 +146,4 @@ var showData = function () {
 
 
 
+searchBtn.addEventListener('click', search());
