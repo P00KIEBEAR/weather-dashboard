@@ -144,7 +144,7 @@ function showData() {
 
 
   uvEl.innerText = uvData;
-  uv.innerText = 'UV:';
+  uv.innerText = 'UV :';
   uv.appendChild(uvEl)
   place.appendChild(icon);
   var currentDate = document.querySelector('.date');
