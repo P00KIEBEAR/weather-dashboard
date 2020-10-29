@@ -13,7 +13,8 @@ var place = document.querySelector('.location');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
-var uv = document.querySelector('uv');
+var uv = document.querySelector('.uv');
+var uvData = ' ';
 var icon = document.createElement('img');
 var iconcode = [];
 var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
@@ -85,20 +86,30 @@ function search() {
   }).then(function (data) {
     days = data
     console.log(data);
-    showData()
+    getUv()
   }).catch(function (error) {
 
     console.log(error);
   });
 }
 
-//fetch('http://api.openweathermap.org/data/2.5/uvi/history?lat=' + lat + '=lon=' + lon + '&appid=ab02afd371ef6319765f7162754109b5')
+function getUv() {
+  return fetch('http://api.openweathermap.org/data/2.5/uvi?lat=' + days[1].coord.lat + '&lon=' + days[1].coord.lon + '&appid=4edc6a02b1204b6d524189262cf14708')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      uvData = json.value
+      console.log(json);
+      showData();
+    })
+}
+//fetch('http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}')
 
-var showData = function () {
+function showData() {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
-  var lat = days[1].coord.lat
-  var lon = days[1].coord.lon
+
 
 
   var m = moment(days[1].dt_txt)
@@ -108,6 +119,33 @@ var showData = function () {
   temp.innerText = 'Temperature:' + days[1].main.temp + '°F';
   humidity.innerText = 'Humidity:' + days[1].main.humidity + '%';
   wind.innerText = 'Wind Speed:' + days[1].wind.speed + 'MPH';
+  var uvEl = document.createElement('span');
+  // still need to get uv in colored box will use an if else
+  if (uvData < 3) {
+    uvEl.classList.remove;
+    uvEl.classList.add('low');
+  }
+  else if (uvData < 6) {
+    uvEl.classList.remove;
+    uvEl.classList.add('moderate');
+  }
+  else if (uvData < 8) {
+    uvEl.classList.remove;
+    uvEl.classList.add('high');
+  }
+  else if (uvData < 11) {
+    uvEl.classList.remove;
+    uvEl.classList.add('very-high');
+  }
+  else {
+    uvEl.classList.remove;
+    uvEl.classList.add('extreme');
+  }
+
+
+  uvEl.innerText = uvData;
+  uv.innerText = 'UV:';
+  uv.appendChild(uvEl)
   place.appendChild(icon);
   var currentDate = document.querySelector('.date');
   currentDate.textContent = date;
