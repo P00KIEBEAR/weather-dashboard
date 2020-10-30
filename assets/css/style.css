@@ -61,7 +61,7 @@ input [type="submit"] {
   max-width: 75%;
 }
 
-.app-title {
+.card-5 .app-title {
   text-align: center;
   font-size: 3rem;
   background-color: var(--primary);
@@ -71,6 +71,7 @@ input [type="submit"] {
   border-radius: var(--border-radius);
   box-shadow: 6px 5px var(--light-dark);
 }
+
 
 .col-6 {
   align-content: flex-end;

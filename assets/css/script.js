@@ -75,7 +75,7 @@ function search() {
   else {
 
   }
-
+  // TA Wesley told me to looking it up
   Promise.all([
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city.value + '&units=imperial&appid=ab02afd371ef6319765f7162754109b5'),
     fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city.value + '&units=imperial&appid=074f5d708bcfe1160c8fa4c5b0d9f5f7')
@@ -109,7 +109,7 @@ function getUv() {
 function showData() {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
-
+  city1.innerHTML = city.value
 
 
   var m = moment(days[1].dt_txt)
@@ -153,6 +153,7 @@ function showData() {
   var dateArr = [days[0].list[6].dt_txt, days[0].list[15].dt_txt, days[0].list[23].dt_txt, days[0].list[30].dt_txt, days[0].list[38].dt_txt];
   var iconArr = [days[0].list[6].weather[0].icon, days[0].list[15].weather[0].icon, days[0].list[23].weather[0].icon, days[0].list[30].weather[0].icon, days[0].list[38].weather[0].icon];
   var tempArr = [days[0].list[6].main.temp, days[0].list[15].main.temp, days[0].list[23].main.temp, days[0].list[30].main.temp, days[0].list[38].main.temp];
+  var humArr = [days[0].list[6].main.humidity, days[0].list[15].main.humidity, days[0].list[23].main.humidity, days[0].list[30].main.humidity, days[0].list[38].main.humidity];
 
 
   // need to search and check time to make sure it allways noon may have to use moment?
@@ -170,20 +171,23 @@ function showData() {
     var dateSlpit = dateArr[i].split(" ");
     //still need to reverse date
     var card = document.createElement('div');
-    card.setAttribute('class', 'col-2 mx-auto');
+    card.setAttribute('class', 'col-2 mx-auto ');
     card5.appendChild(card);
-    var dateEl = document.createElement('p')
+    var dateEl = document.createElement('h6')
     dateEl.innerHTML = dateSlpit[0];
     card.appendChild(dateEl);
-    var tempEl = document.createElement('a')
-    tempEl.innerHTML = tempArr[i] + '°F';
+    var tempEl = document.createElement('p')
+    tempEl.innerHTML = 'Temp :' + tempArr[i] + '°F';
     card.appendChild(tempEl);
+    var humEl = document.createElement('a')
+    humEl.innerHTML = 'Humidity :' + humArr[i];
+    card.appendChild(humEl);
 
     var iconImg = document.createElement('img')
     iconImg.src = "http://openweathermap.org/img/w/" + iconArr[i] + ".png";
     dateEl.appendChild(iconImg)
 
-
+    // add humidity
   }
 }
 
