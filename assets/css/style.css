@@ -72,6 +72,9 @@ input [type="submit"] {
   box-shadow: 6px 5px var(--light-dark);
 }
 
+.card-5 {
+  width: 55rem;
+}
 
 .col-6 {
   align-content: flex-end;
