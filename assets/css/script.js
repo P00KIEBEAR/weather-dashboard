@@ -22,7 +22,7 @@ for (let i = historyLog.length - 1; i >= 0; i--) {
 
   var list = document.createElement('li')
   list.setAttribute('class', "list-group-item list-group-item-action");
-  list.setAttribute('Onclick', 'research()')
+  list.setAttribute('Onclick', 'research(this)')
   list.setAttribute('value', historyLog[i])
   list.innerText = historyLog[i]
   pastSearches.appendChild(list);
@@ -75,7 +75,7 @@ function showData() {
 
   list = document.createElement('li')
   list.setAttribute('class', "list-group-item list-group-item-action");
-  list.setAttribute('Onclick', 'research()')
+  list.setAttribute('Onclick', 'research(this)')
   list.setAttribute('value', city.value)
   list.innerText = city.value
   pastSearches.prepend(list);
@@ -141,28 +141,29 @@ function showData() {
     var card = document.createElement('div');
     card.setAttribute('class', 'col-2 mx-auto ');
     card5.appendChild(card);
-    var dateEl = document.createElement('h6')
+    var dateEl = document.createElement('h6');
     dateEl.innerHTML = dateSlpit[0];
     card.appendChild(dateEl);
-    var tempEl = document.createElement('p')
+    var tempEl = document.createElement('p');
     tempEl.innerHTML = 'Temp :' + tempArr[i] + '°F';
     card.appendChild(tempEl);
     var humEl = document.createElement('a')
-    humEl.innerHTML = 'Humidity :' + humArr[i];
+    humEl.innerHTML = 'Humidity :' + humArr[i] + '%';
     card.appendChild(humEl);
 
-    var iconImg = document.createElement('img')
+    var iconImg = document.createElement('img');
     iconImg.src = "http://openweathermap.org/img/w/" + iconArr[i] + ".png";
-    dateEl.appendChild(iconImg)
+    dateEl.appendChild(iconImg);
 
 
   }
 }
 
 
-var research = function () {
-  console.log(this)
-  console.log(list.textContent)
-  debugger
+var research = function (value) {
+
+  console.log(value.textContent);
+  city.value = value.textContent;
+  search()
 }
 
