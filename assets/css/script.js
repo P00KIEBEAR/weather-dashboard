@@ -40,8 +40,8 @@ function search() {
   }
   // TA Wesley told me to looking it up
   Promise.all([
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city.value + '&units=imperial&appid=ab02afd371ef6319765f7162754109b5'),
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city.value + '&units=imperial&appid=074f5d708bcfe1160c8fa4c5b0d9f5f7')
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city.value + '&units=imperial&appid=ab02afd371ef6319765f7162754109b5'),
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city.value + '&units=imperial&appid=074f5d708bcfe1160c8fa4c5b0d9f5f7')
   ]).then(function (responses) {
     return Promise.all(responses.map(function (response) {
       return response.json();
@@ -57,7 +57,7 @@ function search() {
 }
 
 function getUv() {
-  return fetch('http://api.openweathermap.org/data/2.5/uvi?lat=' + days[1].coord.lat + '&lon=' + days[1].coord.lon + '&appid=4edc6a02b1204b6d524189262cf14708')
+  return fetch('https://api.openweathermap.org/data/2.5/uvi?lat=' + days[1].coord.lat + '&lon=' + days[1].coord.lon + '&appid=4edc6a02b1204b6d524189262cf14708')
     .then(function (response) {
       return response.json();
     })
