@@ -31,6 +31,48 @@ input [type="submit"] {
 
 }
 
+
+.hero {
+  padding: 1% 30%;
+  background-color: var(--dark);
+  color: var(--primary);
+
+}
+
+.hero p {
+  max-width: 75%;
+}
+
+.card-5 .app-title {
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 3rem;
+  background-color: var(--primary);
+  color: var(--dark);
+  padding: 0 10px;
+  align-content: center;
+  border-radius: var(--border-radius);
+  box-shadow: 6px 5px var(--light-dark);
+}
+
+.card-5 {
+  flex-wrap: wrap;
+  width: 55rem;
+}
+
+.col-6 {
+  align-content: flex-end;
+  float: right;
+}
+
+.col-2 {
+  height: 150px;
+  width: 100px;
+  background-color: blue;
+  border-radius: 10%;
+  color: azure;
+}
+
 .low {
   background: mediumseagreen;
 }
@@ -49,42 +91,4 @@ input [type="submit"] {
 
 .extreme {
   background: purple;
-}
-
-.hero {
-  padding: 3% 4%;
-  background-color: var(--dark);
-  color: var(--primary);
-}
-
-.hero p {
-  max-width: 75%;
-}
-
-.card-5 .app-title {
-  text-align: center;
-  font-size: 3rem;
-  background-color: var(--primary);
-  color: var(--dark);
-  padding: 0 10px;
-  align-content: center;
-  border-radius: var(--border-radius);
-  box-shadow: 6px 5px var(--light-dark);
-}
-
-.card-5 {
-  width: 55rem;
-}
-
-.col-6 {
-  align-content: flex-end;
-  float: right;
-}
-
-.col-2 {
-  height: 150px;
-  width: 100px;
-  background-color: blue;
-  border-radius: 10%;
-  color: azure;
 }

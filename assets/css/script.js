@@ -1,11 +1,6 @@
 "use strict";
 
 var date = moment().format('MM/DD/YYYY')
-var city1 = document.querySelector('#city-1');
-var city2 = document.querySelector('#city-2');
-var city3 = document.querySelector('#city-3');
-var city4 = document.querySelector('#city-4');
-var city5 = document.querySelector('#city-5');
 var city = document.querySelector('.city');
 var searchBtn = document.querySelector('.button');
 var card5 = document.querySelector('.card-5');
@@ -20,55 +15,23 @@ var iconcode = [];
 var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
 var days = [];
 var process = [];
-var pastSearches = [city1, city2, city3, city4, city5];
+var listEl = (".list-group-item list-group-item-action")
+
+for (let i = historyLog.length - 1; i >= 0; i--) {
 
 
-
-//need to reverse history list
-
-if (historyLog.length === 0) {
-
+  var list = document.createElement('li')
+  list.setAttribute('class', "list-group-item list-group-item-action");
+  list.setAttribute('Onclick', 'research()')
+  list.setAttribute('value', historyLog[i])
+  list.innerText = historyLog[i]
+  pastSearches.appendChild(list);
 }
-else if (historyLog.length > 4) {
-
-  for (let i = 0; i < 5; i++) {
-    pastSearches[i].innerHTML = historyLog[i]
-
-  }
-}
-else {
-  for (let i = 0; i < historyLog.length; i++) {
-    pastSearches[i].innerHTML = historyLog[i]
-
-  }
-}
-
-function cityA() {
-  city.value = city1.innerHTML;
-  search()
-}
-function cityB() {
-  city.value = city2.innerHTML;
-  search()
-}
-function cityC() {
-
-  city.value = city3.innerHTML;
-  search()
-}
-function cityD() {
-  city.value = city4.innerHTML;
-  search()
-}
-function cityE() {
-  city.value = city5.innerHTML;
-  search()
-}
-
 var days = [];
 
 function search() {
   card5.innerHTML = "";
+
   if (city.value === "") {
     city.value = 'phoenix'
   }
@@ -109,11 +72,16 @@ function getUv() {
 function showData() {
   historyLog.push(city.value);
   localStorage.setItem('historyLog', JSON.stringify(historyLog))
-  city1.innerHTML = city.value
 
+  list = document.createElement('li')
+  list.setAttribute('class', "list-group-item list-group-item-action");
+  list.setAttribute('Onclick', 'research()')
+  list.setAttribute('value', city.value)
+  list.innerText = city.value
+  pastSearches.prepend(list);
 
   var m = moment(days[1].dt_txt)
-
+  city.value = ''
   icon.src = "http://openweathermap.org/img/w/" + days[1].weather[0].icon + ".png";
   place.innerHTML = days[0].city.name;
   temp.innerText = 'Temperature:' + days[1].main.temp + '°F';
@@ -157,13 +125,13 @@ function showData() {
 
 
   // need to search and check time to make sure it allways noon may have to use moment?
-  /*
-   for (let i = 0; i < days[0].length; i++) {
- 
- 
-   }
- 
- */
+
+
+
+
+
+
+
 
   for (let i = 0; i < dateArr.length; i++) {
 
@@ -187,10 +155,14 @@ function showData() {
     iconImg.src = "http://openweathermap.org/img/w/" + iconArr[i] + ".png";
     dateEl.appendChild(iconImg)
 
-    // add humidity
+
   }
 }
 
 
-
+var research = function () {
+  console.log(this)
+  console.log(list.textContent)
+  debugger
+}
 
