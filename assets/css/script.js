@@ -15,16 +15,14 @@ var iconcode = [];
 var historyLog = JSON.parse(localStorage.getItem('historyLog')) || [];
 var days = [];
 var process = [];
-var listEl = (".list-group-item list-group-item-action")
+
 
 for (let i = historyLog.length - 1; i >= 0; i--) {
-
-
-  var list = document.createElement('li')
+  var list = document.createElement('li');
   list.setAttribute('class', "list-group-item list-group-item-action");
-  list.setAttribute('Onclick', 'research(this)')
-  list.setAttribute('value', historyLog[i])
-  list.innerText = historyLog[i]
+  list.setAttribute('Onclick', 'research(this)');
+  list.setAttribute('value', historyLog[i]);
+  list.innerText = historyLog[i];
   pastSearches.appendChild(list);
 }
 var days = [];
@@ -33,7 +31,7 @@ function search() {
   card5.innerHTML = "";
 
   if (city.value === "") {
-    city.value = 'phoenix'
+    city.value = 'phoenix';
   }
   else {
 
@@ -63,7 +61,6 @@ function getUv() {
     })
     .then(function (json) {
       uvData = json.value
-      console.log(json);
       showData();
     })
 }
@@ -88,7 +85,7 @@ function showData() {
   humidity.innerText = 'Humidity:' + days[1].main.humidity + '%';
   wind.innerText = 'Wind Speed:' + days[1].wind.speed + 'MPH';
   var uvEl = document.createElement('span');
-  // still need to get uv in colored box will use an if else
+
   if (uvData < 3) {
     uvEl.classList.remove;
     uvEl.classList.add('low');
@@ -126,13 +123,6 @@ function showData() {
 
   // need to search and check time to make sure it allways noon may have to use moment?
 
-
-
-
-
-
-
-
   for (let i = 0; i < dateArr.length; i++) {
 
 
@@ -150,7 +140,6 @@ function showData() {
     var humEl = document.createElement('a')
     humEl.innerHTML = 'Humidity :' + humArr[i] + '%';
     card.appendChild(humEl);
-
     var iconImg = document.createElement('img');
     iconImg.src = "http://openweathermap.org/img/w/" + iconArr[i] + ".png";
     dateEl.appendChild(iconImg);
@@ -159,10 +148,7 @@ function showData() {
   }
 }
 
-
 var research = function (value) {
-
-  console.log(value.textContent);
   city.value = value.textContent;
   search()
 }
