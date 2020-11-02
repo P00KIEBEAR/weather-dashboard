@@ -115,10 +115,10 @@ function showData() {
   var currentDate = document.querySelector('.date');
   currentDate.textContent = date;
 
-  var dateArr = [days[0].list[6].dt_txt, days[0].list[15].dt_txt, days[0].list[23].dt_txt, days[0].list[30].dt_txt, days[0].list[38].dt_txt];
-  var iconArr = [days[0].list[6].weather[0].icon, days[0].list[15].weather[0].icon, days[0].list[23].weather[0].icon, days[0].list[30].weather[0].icon, days[0].list[38].weather[0].icon];
-  var tempArr = [days[0].list[6].main.temp, days[0].list[15].main.temp, days[0].list[23].main.temp, days[0].list[30].main.temp, days[0].list[38].main.temp];
-  var humArr = [days[0].list[6].main.humidity, days[0].list[15].main.humidity, days[0].list[23].main.humidity, days[0].list[30].main.humidity, days[0].list[38].main.humidity];
+  var dateArr = [days[0].list[6].dt_txt, days[0].list[14].dt_txt, days[0].list[22].dt_txt, days[0].list[30].dt_txt, days[0].list[38].dt_txt];
+  var iconArr = [days[0].list[6].weather[0].icon, days[0].list[14].weather[0].icon, days[0].list[22].weather[0].icon, days[0].list[30].weather[0].icon, days[0].list[38].weather[0].icon];
+  var tempArr = [days[0].list[6].main.temp, days[0].list[14].main.temp, days[0].list[22].main.temp, days[0].list[30].main.temp, days[0].list[38].main.temp];
+  var humArr = [days[0].list[6].main.humidity, days[0].list[14].main.humidity, days[0].list[23].main.humidity, days[0].list[30].main.humidity, days[0].list[38].main.humidity];
 
 
   // need to search and check time to make sure it allways noon may have to use moment?

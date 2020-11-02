@@ -44,3 +44,4 @@ THEN I am again presented with current and future conditions for that city
 - https://stackoverflow.com
 - https://w3school.com
 
+src="assets\images\weather-dashboard.png"
